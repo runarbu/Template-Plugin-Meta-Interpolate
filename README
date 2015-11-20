@@ -1,40 +1,45 @@
-Template-Plugin-Meta-Interpolate version 0.01
-=============================================
+=head1 NAME
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Para::Frame::Template::Plugin::Meta::Interpolate - Allow evaluation of META parameters
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+=head1 SYNOPSIS
 
-INSTALLATION
+  [% META next_template = '~$home/' %]
 
-To install this module type the following:
+Goes to the site home page next
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+  [% META title='-"404 - " _ loc("File not found")' %]
 
-DEPENDENCIES
+The value is enclosed in C<''>. The initial C<-> tells us to
+interpolate the rest as if it said:
 
-This module requires these other modules and libraries:
+  [% title = "404 - " _ loc("File not found") %]
 
-  blah blah blah
+The C<_> is a concatenation operator. And L<Para::Frame::L10N/loc> is
+the translation function.
 
-COPYRIGHT AND LICENCE
+=head1 DESCRIPTION
 
-Put the correct copyright and licence information here.
+If value starts with a '-', the rest of value will be evaluated as a TT
+expression. (No expressions are normally allowed in META.)
 
-Copyright (C) 2015 by A. U. Thor
+If value starts with a '~', the rest of value will be evaluated as a
+TT string with variable interpolation. It's the same as for '-' but
+with the extra "" around the value.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.10.1 or,
-at your option, any later version of Perl 5 you may have available.
+It does not sets the variable if it's already true. That enables you
+to set it in another way.
 
+=head2 Example
+
+  [* META otitle = '-otitle=["[_1]s administration pages", site.name]' *]
+
+The normal use is to set the variable with the result of the template
+output. But to give complex values to a variable, like a list, you can
+do it as above.
+
+
+=head1 SEE ALSO
+
+L<Para::Frame>, L<Para::Frame::Manual::Templates>, L<Para::Frame::TT::header>, L<Template::Plugin>
 
