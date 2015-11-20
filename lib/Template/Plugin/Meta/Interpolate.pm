@@ -133,16 +133,19 @@ sub new
 1;
 
 =head1 AUTHOR
+
     Jonas Liljegren
     jonas@paranormal.se
 
 =head1 COPYRIGHT
+
     Copyright (C) 2004-2009 Jonas Liljegren.  All Rights Reserved.
 
     This module is free software; you can redistribute it and/or
     modify it under the same terms as Perl itself.
 
 =head1 CPAN maintainer
+
     Runar Buvik
     CPAN ID: RUNARB
     runarb@gmail.com
@@ -154,6 +157,6 @@ L<https://github.com/runarbu/Template-Plugin-Meta-Interpolate>
 
 =head1 SEE ALSO
 
-L<http://nothing.tmtm.com/2002/04/dynamic-meta-tags-in-template-toolkit/|Dynamic META tags in Template Toolkit>
+L<Dynamic META tags in Template Toolkit|http://nothing.tmtm.com/2002/04/dynamic-meta-tags-in-template-toolkit/>
 
 =cut
