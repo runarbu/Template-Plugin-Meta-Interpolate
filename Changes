@@ -1,0 +1,6 @@
+Revision history for Perl extension Template::Plugin::Meta::Interpolate.
+
+0.01  Fri Nov 20 07:51:48 2015
+	- original version; created by h2xs 1.23 with options
+		-AX Template::Plugin::Meta::Interpolate
+
