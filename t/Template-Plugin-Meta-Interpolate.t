@@ -5,8 +5,24 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 1;
+use Test::More;
+use Template;
+
 BEGIN { use_ok('Template::Plugin::Meta::Interpolate') };
+
+my $tt = Template->new;
+
+my $template = <<'END_OF_TEMPLATE';
+[% USE Meta::Interpolate -%]
+[% META foo = '-"$var"'; template.foo -%]
+END_OF_TEMPLATE
+
+my $out;
+$tt->process(\$template, { var => 'value' }, \$out) or die $tt->error;
+
+is($out, 'value');
+
+done_testing;
 
 #########################
 
